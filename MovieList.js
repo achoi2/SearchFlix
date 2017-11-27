@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MovieCard from './MovieCard';
 import { Button } from 'bloomer';
+import { Input } from 'bloomer';
 
 export default class MovieList extends Component {
     constructor() {
@@ -22,13 +23,13 @@ export default class MovieList extends Component {
                 search.toLowerCase()) !== -1;
             }
         );
-        return (
-            <div>
-            <input type="text" 
-                value={this.state.search}
-                onChange={this.updateSearch.bind(this)}/>
+        return (            
+            <div>   
+                <Input type="text" isSize='medium' isColor='dark' placeholder='Movies'
+                    value={this.state.search}
+                    onChange={this.updateSearch.bind(this)}/>
                 <ul>
-                    {filteredMovies.map(movie => <MovieCard key={movie.id} title={movie.title} />)}  
+                    {filteredMovies.map(movie => <MovieCard key={movie.id} title={movie.title} poster={movie.poster_path}/>)}  
                     <Button isloading isColor="info" onClick={(e) => handleLoadMoreClick(e)}> Load More </Button>  
                 </ul>
             </div>

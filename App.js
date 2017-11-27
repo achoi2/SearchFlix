@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import "bulma/css/bulma.css";
-import { Container } from "bloomer";
+import { Container, Button } from "bloomer";
 import MovieList from "./MovieList";
 
 class App extends Component {
@@ -11,7 +10,7 @@ class App extends Component {
     this.state = {
       movies: [],
       isloading: true,
-      page: 1
+      page: 1,
     };
   }
   
@@ -52,17 +51,18 @@ class App extends Component {
       content = <MovieList handleLoadMoreClick={(e) => this.loadMore(e)} movies={this.state.movies}/>
     }
     
-    return (
+    return (    
       <Container>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
+            <h1 className="App-title">MovieApp</h1>
+         </header>
+         <Button isColor="primary" isSize="medium" onClick={(e) => this.fetchMovies(e)}> Refresh </Button>
           <Container>{ content }</Container> 
         </div>
-      </Container>
+      </Container>  
     );
+  
   }
 }
 
