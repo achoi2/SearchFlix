@@ -12,12 +12,21 @@ class App extends Component {
       isloading: true,
       page: 1,
     };
+    this.refreshMovies = this.refreshMovies.bind(this);
   }
   
  sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
   } 
     
+  async refreshMovies() {
+    this.movieResults = await this.fetchMovies(this.state.page);  
+    this.setState({
+      movies: this.movieResults,
+      isloading: false
+    }); 
+  }
+
   async fetchMovies(page) {
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=9710505071f8a3028ae8d5341ecf2f53&page=${page}`;
     const results = await fetch(url);
@@ -26,11 +35,7 @@ class App extends Component {
   }
   
   async componentDidMount() {
-    this.movieResults = await this.fetchMovies(this.state.page);  
-    this.setState({
-      movies: this.movieResults,
-      isloading: false
-    });
+    this.refreshMovies();
   }
   
   async loadMore() {
@@ -51,13 +56,14 @@ class App extends Component {
       content = <MovieList handleLoadMoreClick={(e) => this.loadMore(e)} movies={this.state.movies}/>
     }
     
+
     return (    
       <Container>
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">MovieApp</h1>
          </header>
-         <Button isColor="primary" isSize="medium" onClick={(e) => this.fetchMovies(e)}> Refresh </Button>
+         <Button isColor="primary" isSize="medium" onClick={this.refreshMovies}> Refresh </Button>
           <Container>{ content }</Container> 
         </div>
       </Container>  

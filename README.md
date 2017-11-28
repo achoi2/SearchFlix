@@ -9,7 +9,7 @@ Time spent: **X** hours spent in total
 The following **required** functionality is completed:
 
 - [x] User can view a list of movies currently playing in theaters.
-- [ ] User can show/hide details about each movie.
+- [x] User can show/hide details about each movie.
 - [x] User sees loading state while waiting for the API.
 - [ ] User sees an error message when there is a network error.
 - [x] User can refresh the movie list.

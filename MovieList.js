@@ -29,7 +29,7 @@ export default class MovieList extends Component {
                     value={this.state.search}
                     onChange={this.updateSearch.bind(this)}/>
                 <ul>
-                    {filteredMovies.map(movie => <MovieCard key={movie.id} title={movie.title} poster={movie.poster_path}/>)}  
+                    {filteredMovies.map(movie => <MovieCard key={movie.id} title={movie.title} poster={movie.poster_path} overview={movie.overview} date={movie.release_date} vote={movie.vote_count} />)}  
                     <Button isloading isColor="info" onClick={(e) => handleLoadMoreClick(e)}> Load More </Button>  
                 </ul>
             </div>
