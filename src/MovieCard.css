@@ -1,3 +1,8 @@
 .MovieCard-Box {
-    background-color: lightsteelblue;        
+    background-color: lightsteelblue;
+}
+
+.MovieCard-Columns {
+    display: flex;
+    flex-direction: column;
 }

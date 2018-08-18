@@ -1,0 +1,15 @@
+.input {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    width: 700px;
+}
+
+.button {
+    margin: 10px;
+}
+
+.filtered-movies {
+    display: flex;
+    justify-content: space-around; 
+    flex-wrap: wrap;
+}
